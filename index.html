@@ -16,8 +16,8 @@
         <a href="#top" class="nav-brand">Becoming Her Authority™</a>
         <div class="nav-links">
           <a href="#top">Home</a>
+          <a href="#assessment" class="assessment-nav-link">Assessment</a>
           <a href="#method">The H.E.R. Method™</a>
-          <a href="#assessment">Assessment</a>
           <a href="#podcast">Podcast</a>
           <a href="#programs">Programs</a>
           <a href="#contact">Contact</a>
@@ -35,7 +35,10 @@
             Becoming Her Authority™ is the emotionally intelligent transformation ecosystem for women ready to heal deeply,
             reclaim identity, protect peace, and rise into the next chapter with clarity, conviction, and faith.
           </p>
-          <a href="#assessment" class="cta">Start Her Assessment</a>
+          <div class="hero-cta-group">
+            <a href="#assessment" class="cta cta-assessment">Take the Assessment</a>
+            <a href="#assessment" class="cta secondary">Begin Your Assessment</a>
+          </div>
         </div>
         <figure class="hero-image-wrap">
           <img src="Offical Headshot.png" alt="Founder Rinita Buford" class="hero-image" />
@@ -157,6 +160,23 @@
             </div>
           </div>
 
+          
+          <div class="assessment-panel" id="assessment-capture" aria-live="polite">
+            <h3>Before we reveal your results, where should we send your restorative plan?</h3>
+            <p>Share your first name and email so your personalized insights are saved and delivered to your inbox with care.</p>
+            <form id="lead-capture-form" class="lead-form">
+              <label for="first-name">First Name</label>
+              <input id="first-name" name="firstName" type="text" autocomplete="given-name" required placeholder="Your first name" />
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+              <p class="privacy-note">We honor your trust. Your information is used for your assessment results, onboarding support, and intentional follow-up.</p>
+              <div class="assessment-actions">
+                <button type="button" class="ghost-btn" id="capture-back">Back</button>
+                <button type="submit" class="cta assessment-btn">Reveal My Results</button>
+              </div>
+            </form>
+          </div>
+
           <div class="assessment-panel" id="assessment-results" aria-live="polite">
             <h3>Your Restoration Priorities</h3>
             <p class="results-lead">These pillars may benefit from intentional support in this season.</p>
@@ -217,11 +237,11 @@
       <p class="footer-kicker">Faith · Practice · Intention</p>
       <p class="footer-statement">A sanctuary for the woman becoming whole, clear, and fully aligned.</p>
       <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#assessment">Assessment</a>
         <a href="#about">About</a>
         <a href="#method">Method</a>
         <a href="#programs">Programs</a>
-        <a href="#assessment">Assessment</a>
-          <a href="#podcast">Podcast</a>
+        <a href="#podcast">Podcast</a>
       </nav>
       <div class="footer-social" aria-label="Social media">
         <a href="#" aria-label="Instagram" title="Instagram">IG</a>
@@ -252,21 +272,13 @@
       { pillar: "Identity", text: "I feel disconnected from who I truly am." },
       { pillar: "Identity", text: "I am still rebuilding confidence in the woman I am becoming." }
     ];
-
-    const copyByPillar = {
-      Mental: "Your mind may need gentler structure and calmer internal language.",
-      Emotional: "Your emotional world may be asking for validation, care, and safe expression.",
-      Physical: "Your body may be inviting restoration through rhythm, rest, and regulation.",
-      Financial: "Stewardship support can help transform financial stress into clarity and peace.",
-      Relational: "Relational healing may center around boundaries, honesty, and mutual respect.",
-      Time: "Your healing may deepen with firmer time boundaries and value-based scheduling.",
-      Spiritual: "Spiritual anchoring may be the pathway back to trust, peace, and resilience.",
-      Identity: "Identity support may help you embody your next chapter with conviction."
-    };
+    const copyByPillar = { Mental:"Your mind may need gentler structure and calmer internal language.", Emotional:"Your emotional world may be asking for validation, care, and safe expression.", Physical:"Your body may be inviting restoration through rhythm, rest, and regulation.", Financial:"Stewardship support can help transform financial stress into clarity and peace.", Relational:"Relational healing may center around boundaries, honesty, and mutual respect.", Time:"Your healing may deepen with firmer time boundaries and value-based scheduling.", Spiritual:"Spiritual anchoring may be the pathway back to trust, peace, and resilience.", Identity:"Identity support may help you embody your next chapter with conviction." };
+    const nextStepByPillar = { Mental:"Start a 10-minute daily thought declutter practice and protect one distraction-free block.", Emotional:"Choose one safe outlet this week: voice note prayer, journaling, or restorative conversation.", Physical:"Build a micro-rhythm: bedtime boundary, hydration anchor, and 15 minutes of gentle movement.", Financial:"Schedule a calm money check-in and name one decision that increases peace this month.", Relational:"Identify one relationship boundary to communicate with clarity and compassion.", Time:"Audit your week and reclaim two hours for restoration and values-aligned priorities.", Spiritual:"Return to stillness with a daily Scripture + breath ritual to restore trust and grounding.", Identity:"Write a 'who I am becoming' declaration and take one visible aligned action." };
 
     const shell = document.querySelector('.assessment-shell');
     const welcome = document.getElementById('assessment-welcome');
     const question = document.getElementById('assessment-question');
+    const capture = document.getElementById('assessment-capture');
     const results = document.getElementById('assessment-results');
     const progressCopy = document.querySelector('.progress-copy');
     const progressFill = document.querySelector('.progress-fill');
@@ -274,60 +286,75 @@
     const textEl = document.querySelector('.question-text');
     const nextBtn = document.getElementById('assessment-next');
     const backBtn = document.getElementById('assessment-back');
+    const captureBackBtn = document.getElementById('capture-back');
     const startBtn = document.getElementById('assessment-start');
     const scaleButtons = [...document.querySelectorAll('.scale-option')];
     const resultsGrid = document.getElementById('results-grid');
+    const leadForm = document.getElementById('lead-capture-form');
 
     let step = -1;
     const answers = new Array(assessmentQuestions.length).fill(null);
+    let lead = { firstName: '', email: '' };
 
-    const setActive = (panel) => {
-      [welcome, question, results].forEach(p => p.classList.remove('is-active'));
-      panel.classList.add('is-active');
-    };
-
+    const setActive = (panel) => [welcome, question, capture, results].forEach(p => p.classList.toggle('is-active', p === panel));
+    const updateProgress = (label, pct) => { progressCopy.textContent = label; progressFill.style.width = pct; };
     const renderQuestion = () => {
       const current = assessmentQuestions[step];
       pillarEl.textContent = current.pillar;
       textEl.textContent = current.text;
-      progressCopy.textContent = `Question ${step + 1} of ${assessmentQuestions.length}`;
-      progressFill.style.width = `${((step + 1) / assessmentQuestions.length) * 100}%`;
+      updateProgress(`Question ${step + 1} of ${assessmentQuestions.length}`, `${((step + 1) / assessmentQuestions.length) * 100}%`);
       scaleButtons.forEach(btn => btn.classList.toggle('is-selected', Number(btn.dataset.value) === answers[step]));
       nextBtn.disabled = answers[step] === null;
-      nextBtn.textContent = step === assessmentQuestions.length - 1 ? 'Reveal My Results' : 'Continue';
+      nextBtn.textContent = step === assessmentQuestions.length - 1 ? 'Continue to Results' : 'Continue';
       backBtn.textContent = step === 0 ? 'Back to Welcome' : 'Previous';
     };
-
-    const showResults = () => {
+    const buildResults = () => {
       const totals = {};
       assessmentQuestions.forEach((q, i) => { totals[q.pillar] = (totals[q.pillar] || 0) + (answers[i] || 0); });
-      const top = Object.entries(totals).sort((a, b) => b[1] - a[1]).slice(0, 3);
-      resultsGrid.innerHTML = top.map(([pillar, score]) => `
-        <article class="result-card">
-          <p class="result-pill">${pillar}</p>
-          <h4>Support Priority</h4>
-          <p>${copyByPillar[pillar]}</p>
-          <span class="result-score">Reflection signal: ${score}</span>
-        </article>
-      `).join('');
-      progressCopy.textContent = 'Assessment Complete';
-      progressFill.style.width = '100%';
+      return Object.entries(totals).sort((a,b) => b[1]-a[1]).slice(0,3).map(([pillar,score]) => ({ pillar, score }));
+    };
+    const persistLead = (summary) => {
+      const payload = { lead, answers, summary, createdAt: new Date().toISOString(), source: 'bha-assessment-v1' };
+      localStorage.setItem('bha_assessment_latest', JSON.stringify(payload));
+      return payload;
+    };
+    const sendAssessmentEmail = async (payload) => {
+      const endpoint = window.BHA_EMAIL_ENDPOINT || '';
+      if (!endpoint) return { status: 'queued_local' };
+      const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+      return { status: response.ok ? 'sent' : 'failed' };
+    };
+    const showResults = async () => {
+      const top = buildResults();
+      const first = lead.firstName || 'Beloved';
+      resultsGrid.innerHTML = top.map(({pillar,score}) => `<article class="result-card"><p class="result-pill">${pillar}</p><h4>${first}, this pillar is asking for support</h4><p>${copyByPillar[pillar]}</p><p class="result-next">Next step: ${nextStepByPillar[pillar]}</p><span class="result-score">Reflection signal: ${score}</span></article>`).join('');
+      const payload = persistLead(top);
+      const status = await sendAssessmentEmail(payload);
+      if (status.status !== 'sent') {
+        resultsGrid.insertAdjacentHTML('beforeend', '<article class="result-card"><p class="result-pill">Delivery Note</p><h4>Your insights are saved.</h4><p>We are preparing email delivery infrastructure. Your results are securely staged for follow-up and onboarding flows.</p></article>');
+      }
+      updateProgress('Assessment Complete', '100%');
       setActive(results);
     };
 
     startBtn.addEventListener('click', () => { step = 0; setActive(question); renderQuestion(); });
-    scaleButtons.forEach(btn => btn.addEventListener('click', () => {
-      answers[step] = Number(btn.dataset.value);
-      renderQuestion();
-    }));
+    scaleButtons.forEach(btn => btn.addEventListener('click', () => { answers[step] = Number(btn.dataset.value); renderQuestion(); }));
     nextBtn.addEventListener('click', () => {
       if (answers[step] === null) return;
-      if (step === assessmentQuestions.length - 1) return showResults();
+      if (step === assessmentQuestions.length - 1) { setActive(capture); return updateProgress('One more step: secure your results', '96%'); }
       step += 1; renderQuestion();
     });
     backBtn.addEventListener('click', () => {
-      if (step === 0) { step = -1; progressCopy.textContent = 'Welcome'; progressFill.style.width = '0%'; return setActive(welcome); }
+      if (step === 0) { step = -1; setActive(welcome); return updateProgress('Welcome', '0%'); }
       step -= 1; renderQuestion();
+    });
+    captureBackBtn.addEventListener('click', () => { setActive(question); updateProgress(`Question ${assessmentQuestions.length} of ${assessmentQuestions.length}`, '100%'); });
+    leadForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(leadForm);
+      lead = { firstName: String(formData.get('firstName') || '').trim(), email: String(formData.get('email') || '').trim().toLowerCase() };
+      if (!lead.firstName || !lead.email) return;
+      await showResults();
     });
   </script>
 </body>
