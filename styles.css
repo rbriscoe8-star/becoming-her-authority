@@ -1,5 +1,5 @@
 :root {
-  --bg: #050505;
+  --bg: #020102;
   --panel: #101010;
   --panel-soft: #161616;
   --gold: #d6b25e;
@@ -16,7 +16,9 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: radial-gradient(circle at 85% 12%, rgba(255, 77, 184, 0.16), transparent 36%), var(--bg);
+  background: radial-gradient(circle at 84% 14%, rgba(255, 77, 184, 0.13), transparent 40%),
+    radial-gradient(circle at 18% 18%, rgba(255, 143, 208, 0.07), transparent 34%),
+    var(--bg);
   color: var(--white);
   font-family: "Georgia", "Times New Roman", serif;
   line-height: 1.75;
@@ -50,9 +52,9 @@ body {
 .hero-glow {
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(5, 5, 5, 0.93) 0%, rgba(5, 5, 5, 0.72) 52%, rgba(5, 5, 5, 0.93) 100%),
-    radial-gradient(circle at 75% 25%, rgba(255, 77, 184, 0.25), transparent 48%),
-    radial-gradient(circle at 25% 85%, rgba(255, 143, 208, 0.14), transparent 45%);
+    linear-gradient(90deg, rgba(2, 2, 2, 0.97) 0%, rgba(4, 4, 4, 0.84) 52%, rgba(2, 2, 2, 0.97) 100%),
+    radial-gradient(circle at 72% 24%, rgba(255, 77, 184, 0.2), transparent 46%),
+    radial-gradient(circle at 22% 83%, rgba(255, 143, 208, 0.1), transparent 42%);
   z-index: 0;
 }
 
@@ -64,21 +66,37 @@ body {
   grid-template-columns: 1.15fr 0.85fr; align-items: center;
 }
 
+.logo-panel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.3rem;
+  padding: 22px 28px;
+  border-radius: 18px;
+  background: rgba(12, 8, 10, 0.72);
+  border: 1px solid rgba(226, 190, 85, 0.35);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 22px rgba(255, 77, 184, 0.22), 0 0 34px rgba(226, 190, 85, 0.18);
+}
+
 .brand-logo {
   width: min(332px, 66vw);
-  margin-bottom: 1.1rem;
-  mix-blend-mode: normal;
-  opacity: 0.98;
+  margin-bottom: 0;
+  display: block;
+  max-width: 100%;
+  mix-blend-mode: initial;
+  opacity: 1;
   filter:
-    brightness(1.14)
-    contrast(1.08)
+    brightness(1.22)
+    contrast(1.18)
+    saturate(1.08)
     drop-shadow(0 0 18px rgba(255, 77, 184, 0.26))
     drop-shadow(0 0 34px rgba(255, 143, 208, 0.2));
 }
 
 .kicker, .section-label { letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-soft); font-size: 0.78rem; margin-bottom: 1rem; }
 
-h1, h2, h3, h4 { font-weight: 500; margin-top: 0; color: var(--gold); }
+h1, h2, h3, h4 { font-weight: 500; margin-top: 0; color: #deb967; text-shadow: 0 0 14px rgba(226, 190, 85, 0.16); }
 h1 { font-size: clamp(2rem, 5vw, 4.35rem); line-height: 1.1; margin-bottom: 1.1rem; text-wrap: balance; }
 .lead { max-width: 64ch; color: var(--muted); font-size: 1.07rem; margin-bottom: 2rem; }
 
