@@ -266,7 +266,55 @@ figcaption span {
 .method-card p, .program-item p, .pillar-card p, .podcast-card p { color: var(--muted); margin: 0; }
 
 .pillars h2 { margin-bottom: 2rem; }
+.pillars .section-label,
+.pillars h2 {
+  position: relative;
+  z-index: 1;
+}
+.pillars h2::before {
+  left: -1.6rem;
+  right: -1.6rem;
+  top: 50%;
+  height: 1.85em;
+  background: radial-gradient(ellipse at center, rgba(255, 143, 208, 0.2), rgba(255, 77, 184, 0) 72%);
+  filter: blur(10px);
+}
+.pillars::before {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 2.8rem;
+  height: 11rem;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255, 143, 208, 0.12), rgba(255, 143, 208, 0) 72%),
+    radial-gradient(ellipse at 52% 42%, rgba(214, 178, 94, 0.05), rgba(214, 178, 94, 0) 74%);
+  filter: blur(16px);
+  z-index: 0;
+}
 .pillar-group { margin-bottom: 2rem; }
+.pillar-group + .pillar-group {
+  position: relative;
+  margin-top: 2.4rem;
+  padding-top: 2rem;
+}
+.pillar-group + .pillar-group::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 143, 208, 0.16) 14%,
+    rgba(214, 178, 94, 0.32) 50%,
+    rgba(255, 143, 208, 0.16) 86%,
+    transparent 100%
+  );
+}
 .pillar-group > h3 {
   font-size: 1rem;
   letter-spacing: 0.14em;
@@ -277,6 +325,41 @@ figcaption span {
   padding-left: 0.8rem;
 }
 .pillar-card h4 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+.pillar-card {
+  border-color: rgba(214, 178, 94, 0.28);
+  box-shadow:
+    0 12px 24px rgba(10, 5, 10, 0.42),
+    0 0 0 1px rgba(255, 143, 208, 0.05) inset,
+    inset 0 0 0.8px rgba(249, 228, 176, 0.32),
+    inset 0 0 18px rgba(214, 178, 94, 0.08);
+  transition:
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.42s ease,
+    border-color 0.38s ease,
+    background 0.42s ease;
+}
+.pillar-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(128deg, rgba(245, 225, 174, 0.1), transparent 34%, rgba(255, 143, 208, 0.05) 68%, transparent 100%);
+  mix-blend-mode: screen;
+  opacity: 0.44;
+}
+.pillar-card p {
+  color: #d8d0c6;
+}
+.pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 143, 208, 0.48);
+  box-shadow:
+    0 18px 34px rgba(11, 5, 11, 0.58),
+    0 0 24px rgba(255, 143, 208, 0.2),
+    0 0 46px rgba(255, 77, 184, 0.18),
+    inset 0 0 1px rgba(249, 228, 176, 0.48),
+    inset 0 0 20px rgba(214, 178, 94, 0.11);
+}
 .pillar-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .pillar-grid.two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
