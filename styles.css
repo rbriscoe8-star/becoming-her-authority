@@ -382,18 +382,106 @@ blockquote {
 
 .podcast-card { max-width: 860px; }
 
-.footer {
+.final-cta {
   text-align: center;
-  color: var(--muted);
-  padding: 3.5rem 6vw;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  background: linear-gradient(180deg, rgba(7, 4, 6, 0), rgba(13, 7, 11, 0.5));
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+  background:
+    radial-gradient(circle at 50% 6%, rgba(255, 143, 208, 0.13), transparent 52%),
+    radial-gradient(circle at 50% 24%, rgba(214, 178, 94, 0.08), transparent 58%),
+    linear-gradient(180deg, rgba(9, 5, 8, 0.3) 0%, rgba(11, 6, 10, 0.85) 66%, rgba(13, 7, 12, 1) 100%);
 }
-.footer-line { height: 1px; width: min(720px, 100%); margin: 0 auto 1.25rem; background: linear-gradient(90deg, transparent, rgba(255, 143, 208, 0.48), rgba(214, 178, 94, 0.58), transparent); }
-.footer-brand { color: var(--gold); font-size: 1.05rem; margin-bottom: 0.35rem; }
-.footer-kicker { color: var(--gold-soft); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.72rem; margin-bottom: 0.7rem; }
-.footer-social { margin-bottom: 0.85rem; color: var(--white); }
+.final-cta p {
+  max-width: 62ch;
+  margin: 0 auto;
+  color: #e4dbce;
+}
+.final-cta-button {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, rgba(214, 178, 94, 0.3), rgba(255, 77, 184, 0.14));
+  transition: transform 0.45s ease, box-shadow 0.45s ease, border-color 0.45s ease, letter-spacing 0.45s ease;
+}
+.final-cta-button:hover {
+  transform: translateY(-2px);
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 42px rgba(255, 143, 208, 0.26), 0 16px 28px rgba(12, 7, 11, 0.58);
+}
+
+.footer {
+  position: relative;
+  text-align: center;
+  color: #d9d0c3;
+  padding: 4.5rem 6vw 4rem;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 143, 208, 0.11), transparent 40%),
+    linear-gradient(180deg, rgba(14, 8, 12, 0.95) 0%, rgba(9, 5, 8, 1) 50%, rgba(5, 3, 5, 1) 100%);
+}
+.footer-line { height: 1px; width: min(760px, 100%); margin: 0 auto 1.4rem; background: linear-gradient(90deg, transparent, rgba(255, 143, 208, 0.4), rgba(214, 178, 94, 0.62), transparent); }
+.footer-brand { color: var(--gold-soft); font-size: 1rem; margin-bottom: 0.45rem; letter-spacing: 0.11em; text-transform: uppercase; }
+.footer-kicker { color: #efe2c7; text-transform: uppercase; letter-spacing: 0.19em; font-size: 0.68rem; margin-bottom: 0.8rem; }
+.footer-statement { color: #e8ddcc; margin: 0 auto 1.2rem; max-width: 58ch; font-size: 0.84rem; }
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.footer-nav a {
+  color: #e7dbc2;
+  text-decoration: none;
+  font-size: 0.79rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: color 0.35s ease, text-shadow 0.35s ease;
+}
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: var(--gold-soft);
+  text-shadow: 0 0 12px rgba(255, 143, 208, 0.34);
+}
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.footer-social a {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(214, 178, 94, 0.38);
+  display: grid;
+  place-items: center;
+  color: #f3e8d0;
+  text-decoration: none;
+  font-size: 0.67rem;
+  letter-spacing: 0.08em;
+  background: rgba(8, 5, 8, 0.62);
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  border-color: rgba(255, 143, 208, 0.5);
+  color: var(--gold-soft);
+  box-shadow: 0 0 0 1px rgba(255, 143, 208, 0.2), 0 0 16px rgba(255, 143, 208, 0.26);
+}
+.footer-copyright { color: #c6bdaF; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: slowReveal 1.5s ease forwards;
+  animation-delay: 0.15s;
+}
+@keyframes slowReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @media (max-width: 960px) {
   .hero-inner { grid-template-columns: 1fr; padding-top: 4rem; }
