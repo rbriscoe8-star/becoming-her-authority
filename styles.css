@@ -71,7 +71,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 1.3rem;
-  padding: 22px 28px;
+  padding: 24px 30px;
   border-radius: 18px;
   background: rgba(12, 8, 10, 0.72);
   border: 1px solid rgba(226, 190, 85, 0.35);
@@ -80,7 +80,7 @@ body {
 }
 
 .brand-logo {
-  width: min(332px, 66vw);
+  width: min(380px, 74vw);
   margin-bottom: 0;
   display: block;
   max-width: 100%;
@@ -89,7 +89,7 @@ body {
   filter:
     brightness(1.22)
     contrast(1.18)
-    saturate(1.08)
+    saturate(1.12)
     drop-shadow(0 0 18px rgba(255, 77, 184, 0.26))
     drop-shadow(0 0 34px rgba(255, 143, 208, 0.2));
 }
