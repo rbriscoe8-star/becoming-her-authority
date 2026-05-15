@@ -17,6 +17,7 @@
         <div class="nav-links">
           <a href="#top">Home</a>
           <a href="#method">The H.E.R. Method™</a>
+          <a href="#assessment">Assessment</a>
           <a href="#podcast">Podcast</a>
           <a href="#programs">Programs</a>
           <a href="#contact">Contact</a>
@@ -34,7 +35,7 @@
             Becoming Her Authority™ is the emotionally intelligent transformation ecosystem for women ready to heal deeply,
             reclaim identity, protect peace, and rise into the next chapter with clarity, conviction, and faith.
           </p>
-          <a href="#programs" class="cta">Enter the Experience</a>
+          <a href="#assessment" class="cta">Start Her Assessment</a>
         </div>
         <figure class="hero-image-wrap">
           <img src="Offical Headshot.png" alt="Founder Rinita Buford" class="hero-image" />
@@ -122,6 +123,58 @@
         </blockquote>
       </section>
 
+      
+
+      <section class="section assessment" id="assessment">
+        <p class="section-label">Becoming Her Authority™ Assessment</p>
+        <h2>Your Gentle H.E.R. Check-In</h2>
+        <p class="assessment-intro">This is a restorative self-reflection experience designed to help you notice where support, structure, and healing are most needed right now. Move gently, answer honestly, and trust what rises.</p>
+
+        <div class="assessment-shell" data-step="welcome">
+          <div class="assessment-progress" aria-live="polite">
+            <span class="progress-copy">Welcome</span>
+            <div class="progress-track"><div class="progress-fill"></div></div>
+          </div>
+
+          <div class="assessment-panel is-active" id="assessment-welcome">
+            <h3>Before we begin, take one grounding breath.</h3>
+            <p>This assessment is emotionally safe by design. There are no wrong answers—only insight for the woman you are becoming.</p>
+            <button class="cta assessment-btn" id="assessment-start">Begin Assessment</button>
+          </div>
+
+          <div class="assessment-panel" id="assessment-question" aria-live="polite">
+            <p class="question-pillar"></p>
+            <h3 class="question-text"></h3>
+            <div class="scale-wrap" role="radiogroup" aria-label="Rating scale">
+              <button class="scale-option" data-value="1">Rarely true</button>
+              <button class="scale-option" data-value="2">Sometimes true</button>
+              <button class="scale-option" data-value="3">Often true</button>
+              <button class="scale-option" data-value="4">Deeply true</button>
+            </div>
+            <div class="assessment-actions">
+              <button class="ghost-btn" id="assessment-back">Previous</button>
+              <button class="cta assessment-btn" id="assessment-next" disabled>Continue</button>
+            </div>
+          </div>
+
+          <div class="assessment-panel" id="assessment-results" aria-live="polite">
+            <h3>Your Restoration Priorities</h3>
+            <p class="results-lead">These pillars may benefit from intentional support in this season.</p>
+            <div class="results-grid" id="results-grid"></div>
+            <div class="results-cta">
+              <p>Continue your next chapter with guided support:</p>
+              <div class="results-links">
+                <a href="#programs">Healing Circle</a>
+                <a href="#programs">Workshops</a>
+                <a href="#programs">Intensives</a>
+                <a href="#programs">Workbook</a>
+                <a href="#podcast">Podcast</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section podcast" id="podcast">
         <p class="section-label">Podcast · Becoming Her</p>
         <h2>Conversations for the Woman Becoming Again</h2>
@@ -167,7 +220,8 @@
         <a href="#about">About</a>
         <a href="#method">Method</a>
         <a href="#programs">Programs</a>
-        <a href="#podcast">Podcast</a>
+        <a href="#assessment">Assessment</a>
+          <a href="#podcast">Podcast</a>
       </nav>
       <div class="footer-social" aria-label="Social media">
         <a href="#" aria-label="Instagram" title="Instagram">IG</a>
@@ -178,5 +232,104 @@
       <div class="footer-line"></div>
     </footer>
   </div>
+
+  <script>
+    const assessmentQuestions = [
+      { pillar: "Mental", text: "I feel mentally overloaded and struggle to quiet my thoughts." },
+      { pillar: "Mental", text: "I find it difficult to focus on what matters most." },
+      { pillar: "Emotional", text: "I often feel emotionally exhausted even when I rest." },
+      { pillar: "Emotional", text: "I hold in my feelings because I do not feel safe expressing them." },
+      { pillar: "Physical", text: "My body has been signaling stress or burnout." },
+      { pillar: "Physical", text: "My sleep, nourishment, or movement rhythms feel inconsistent." },
+      { pillar: "Financial", text: "Money decisions currently feel heavy or emotionally draining." },
+      { pillar: "Financial", text: "I want stronger structure and peace in how I manage resources." },
+      { pillar: "Relational", text: "I feel stretched thin by relationships that are not reciprocal." },
+      { pillar: "Relational", text: "I need healthier boundaries in key relationships." },
+      { pillar: "Time", text: "I struggle to protect my time without guilt." },
+      { pillar: "Time", text: "My schedule does not fully reflect my healing priorities." },
+      { pillar: "Spiritual", text: "I feel spiritually disconnected or inconsistent in this season." },
+      { pillar: "Spiritual", text: "I want deeper trust, stillness, and alignment with God." },
+      { pillar: "Identity", text: "I feel disconnected from who I truly am." },
+      { pillar: "Identity", text: "I am still rebuilding confidence in the woman I am becoming." }
+    ];
+
+    const copyByPillar = {
+      Mental: "Your mind may need gentler structure and calmer internal language.",
+      Emotional: "Your emotional world may be asking for validation, care, and safe expression.",
+      Physical: "Your body may be inviting restoration through rhythm, rest, and regulation.",
+      Financial: "Stewardship support can help transform financial stress into clarity and peace.",
+      Relational: "Relational healing may center around boundaries, honesty, and mutual respect.",
+      Time: "Your healing may deepen with firmer time boundaries and value-based scheduling.",
+      Spiritual: "Spiritual anchoring may be the pathway back to trust, peace, and resilience.",
+      Identity: "Identity support may help you embody your next chapter with conviction."
+    };
+
+    const shell = document.querySelector('.assessment-shell');
+    const welcome = document.getElementById('assessment-welcome');
+    const question = document.getElementById('assessment-question');
+    const results = document.getElementById('assessment-results');
+    const progressCopy = document.querySelector('.progress-copy');
+    const progressFill = document.querySelector('.progress-fill');
+    const pillarEl = document.querySelector('.question-pillar');
+    const textEl = document.querySelector('.question-text');
+    const nextBtn = document.getElementById('assessment-next');
+    const backBtn = document.getElementById('assessment-back');
+    const startBtn = document.getElementById('assessment-start');
+    const scaleButtons = [...document.querySelectorAll('.scale-option')];
+    const resultsGrid = document.getElementById('results-grid');
+
+    let step = -1;
+    const answers = new Array(assessmentQuestions.length).fill(null);
+
+    const setActive = (panel) => {
+      [welcome, question, results].forEach(p => p.classList.remove('is-active'));
+      panel.classList.add('is-active');
+    };
+
+    const renderQuestion = () => {
+      const current = assessmentQuestions[step];
+      pillarEl.textContent = current.pillar;
+      textEl.textContent = current.text;
+      progressCopy.textContent = `Question ${step + 1} of ${assessmentQuestions.length}`;
+      progressFill.style.width = `${((step + 1) / assessmentQuestions.length) * 100}%`;
+      scaleButtons.forEach(btn => btn.classList.toggle('is-selected', Number(btn.dataset.value) === answers[step]));
+      nextBtn.disabled = answers[step] === null;
+      nextBtn.textContent = step === assessmentQuestions.length - 1 ? 'Reveal My Results' : 'Continue';
+      backBtn.textContent = step === 0 ? 'Back to Welcome' : 'Previous';
+    };
+
+    const showResults = () => {
+      const totals = {};
+      assessmentQuestions.forEach((q, i) => { totals[q.pillar] = (totals[q.pillar] || 0) + (answers[i] || 0); });
+      const top = Object.entries(totals).sort((a, b) => b[1] - a[1]).slice(0, 3);
+      resultsGrid.innerHTML = top.map(([pillar, score]) => `
+        <article class="result-card">
+          <p class="result-pill">${pillar}</p>
+          <h4>Support Priority</h4>
+          <p>${copyByPillar[pillar]}</p>
+          <span class="result-score">Reflection signal: ${score}</span>
+        </article>
+      `).join('');
+      progressCopy.textContent = 'Assessment Complete';
+      progressFill.style.width = '100%';
+      setActive(results);
+    };
+
+    startBtn.addEventListener('click', () => { step = 0; setActive(question); renderQuestion(); });
+    scaleButtons.forEach(btn => btn.addEventListener('click', () => {
+      answers[step] = Number(btn.dataset.value);
+      renderQuestion();
+    }));
+    nextBtn.addEventListener('click', () => {
+      if (answers[step] === null) return;
+      if (step === assessmentQuestions.length - 1) return showResults();
+      step += 1; renderQuestion();
+    });
+    backBtn.addEventListener('click', () => {
+      if (step === 0) { step = -1; progressCopy.textContent = 'Welcome'; progressFill.style.width = '0%'; return setActive(welcome); }
+      step -= 1; renderQuestion();
+    });
+  </script>
 </body>
 </html>
+
