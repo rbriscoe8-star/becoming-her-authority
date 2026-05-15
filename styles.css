@@ -64,7 +64,17 @@ body {
   grid-template-columns: 1.15fr 0.85fr; align-items: center;
 }
 
-.brand-logo { width: min(360px, 70vw); filter: drop-shadow(0 0 22px rgba(255, 77, 184, 0.28)); margin-bottom: 1.1rem; }
+.brand-logo {
+  width: min(332px, 66vw);
+  margin-bottom: 1.1rem;
+  mix-blend-mode: normal;
+  opacity: 0.98;
+  filter:
+    brightness(1.14)
+    contrast(1.08)
+    drop-shadow(0 0 18px rgba(255, 77, 184, 0.26))
+    drop-shadow(0 0 34px rgba(255, 143, 208, 0.2));
+}
 
 .kicker, .section-label { letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-soft); font-size: 0.78rem; margin-bottom: 1rem; }
 
@@ -90,7 +100,22 @@ h1 { font-size: clamp(2rem, 5vw, 4.35rem); line-height: 1.1; margin-bottom: 1.1r
 }
 
 .hero-image { display: block; width: 100%; height: auto; object-fit: cover; border: 1px solid rgba(255, 255, 255, 0.12); }
-figcaption { margin-top: 0.75rem; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; }
+figcaption {
+  margin-top: 0.95rem;
+  color: #f2e7cf;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  line-height: 1.55;
+  text-shadow: 0 0 14px rgba(255, 143, 208, 0.14);
+}
+
+figcaption span {
+  display: block;
+  font-size: 0.9em;
+  letter-spacing: 0.11em;
+  color: #efe1c4;
+}
 
 .section { max-width: 1240px; margin: 0 auto; padding: 7rem 6vw; }
 .section + .section { border-top: 1px solid rgba(214, 178, 94, 0.12); }
