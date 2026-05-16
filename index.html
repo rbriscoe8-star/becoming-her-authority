@@ -77,6 +77,7 @@
             <p>Move with intention into your next chapter—clear in purpose, anchored in peace, and unapologetic about your power.</p>
           </article>
         </div>
+
       </section>
 
       <section class="section pillars" id="pillars">
@@ -132,6 +133,17 @@
       <section class="section assessment" id="assessment">
         <p class="section-label">Becoming Her Authority™ Assessment</p>
         <h2>Your Gentle H.E.R. Check-In</h2>
+        <div class="assessment-prelude">
+          <h3>Discover What Your Mind, Body, and Heart May Be Asking For</h3>
+          <p>You do not have to keep carrying everything alone. This assessment was designed to help you identify areas where healing, boundaries, peace, or intentional rebuilding may need support.</p>
+        </div>
+
+        <div class="assessment-flow" aria-label="Assessment journey">
+          <article class="flow-step"><span>Step 1</span><p>Take Your Assessment</p></article>
+          <article class="flow-step"><span>Step 2</span><p>Receive Your Personalized Reflection</p></article>
+          <article class="flow-step"><span>Step 3</span><p>Begin Your Healing Journey</p></article>
+        </div>
+
         <p class="assessment-intro">This is a restorative self-reflection experience designed to help you notice where support, structure, and healing are most needed right now. Move gently, answer honestly, and trust what rises.</p>
 
         <div class="assessment-shell" data-step="welcome">
@@ -191,6 +203,13 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="assessment-next-step">
+          <h3>Ready for Your Next Step?</h3>
+          <p>Receive personalized reflections, resources, and guidance designed around your journey.</p>
+          <a href="#assessment-capture" class="cta" id="assessment-next-step-cta">Get My Personalized Reflection</a>
+          <p class="trust-note">Thoughtful guidance. No spam. Just intentional support.</p>
         </div>
       </section>
 
@@ -363,6 +382,7 @@
     const scaleButtons = [...document.querySelectorAll('.scale-option')];
     const resultsGrid = document.getElementById('results-grid');
     const leadForm = document.getElementById('lead-capture-form');
+    const nextStepCta = document.getElementById('assessment-next-step-cta');
 
     let step = -1;
     const answers = new Array(assessmentQuestions.length).fill(null);
@@ -421,6 +441,13 @@
       step -= 1; renderQuestion();
     });
     captureBackBtn.addEventListener('click', () => { setActive(question); updateProgress(`Question ${assessmentQuestions.length} of ${assessmentQuestions.length}`, '100%'); });
+    nextStepCta.addEventListener('click', (event) => {
+      event.preventDefault();
+      setActive(capture);
+      updateProgress('One more step: secure your results', '96%');
+      capture.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
     leadForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       const formData = new FormData(leadForm);
