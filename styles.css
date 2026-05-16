@@ -606,6 +606,13 @@ blockquote {
   margin-top: 0.35rem;
 }
 .cta-assessment { box-shadow: 0 0 30px rgba(255, 77, 184, 0.4), 0 10px 20px rgba(9, 4, 9, 0.45); }
+.hero-cta-microcopy {
+  margin: 0.35rem 0 0;
+  color: #e8d9bf;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  max-width: 64ch;
+}
 
 .lead-form {
   display: grid;
