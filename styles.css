@@ -557,7 +557,8 @@ blockquote {
 }
 .hero-cta-group {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
   align-items: center;
   margin-top: 0.35rem;
 }
@@ -579,6 +580,14 @@ blockquote {
 .lead-form input:focus { outline: none; border-color: rgba(255,143,208,0.75); box-shadow: 0 0 0 3px rgba(255,77,184,0.14); }
 .privacy-note { color:#d6cab6; font-size:0.82rem; max-width:60ch; }
 .result-next { color:#e7dcc8; margin-bottom:0.6rem !important; }
+
+
+.section-cta-row {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
 
 /* Ecosystem expansion */
 .ecosystem .editorial-lead { max-width: 72ch; color: var(--muted); margin-bottom: 2rem; }
