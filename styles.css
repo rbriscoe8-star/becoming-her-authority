@@ -579,3 +579,32 @@ blockquote {
 .lead-form input:focus { outline: none; border-color: rgba(255,143,208,0.75); box-shadow: 0 0 0 3px rgba(255,77,184,0.14); }
 .privacy-note { color:#d6cab6; font-size:0.82rem; max-width:60ch; }
 .result-next { color:#e7dcc8; margin-bottom:0.6rem !important; }
+
+/* Ecosystem expansion */
+.ecosystem .editorial-lead { max-width: 72ch; color: var(--muted); margin-bottom: 2rem; }
+.ecosystem-grid { display: grid; gap: 1.25rem; }
+.ecosystem-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ecosystem-card, .featured-episode {
+  position: relative;
+  padding: 1.4rem;
+  background: linear-gradient(160deg, rgba(214,178,94,0.08), rgba(255,77,184,0.05));
+  border: 1px solid rgba(214,178,94,0.24);
+  box-shadow: 0 12px 24px rgba(10,5,10,0.42);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.ecosystem-card:hover, .featured-episode:hover { transform: translateY(-3px); border-color: rgba(255,143,208,.42); box-shadow: 0 16px 30px rgba(11,5,11,.55),0 0 30px rgba(255,77,184,.2); }
+.featured-episode { margin-bottom: 1.4rem; }
+.mini-label { color: var(--gold-soft); letter-spacing: .11em; text-transform: uppercase; font-size: .78rem; }
+.shop-group { margin-top: 2.2rem; }
+.resources-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.about-founder { display: grid; grid-template-columns: .9fr 1.1fr; gap: 2rem; align-items: center; }
+.founder-portrait { max-width: 440px; }
+.assessment-embed { max-width: 760px; }
+
+@media (max-width: 1100px) {
+  .ecosystem-grid.three, .resources-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .top-nav { align-items: flex-start; }
+  .about-founder, .ecosystem-grid.three, .resources-grid { grid-template-columns: 1fr; }
+}
