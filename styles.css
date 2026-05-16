@@ -489,6 +489,49 @@ blockquote {
   .nav-links { gap: 0.8rem; }
 }
 
+.assessment-prelude {
+  max-width: 72ch;
+  margin-bottom: 1.25rem;
+}
+.assessment-prelude h3 {
+  font-size: clamp(1.2rem, 2vw, 1.85rem);
+  margin-bottom: 0.65rem;
+}
+.assessment-prelude p { color: #ddd2c4; }
+
+.assessment-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1.45rem;
+}
+.flow-step {
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(214, 178, 94, 0.28);
+  background: linear-gradient(160deg, rgba(214, 178, 94, 0.08), rgba(255, 143, 208, 0.07));
+  box-shadow: inset 0 0 18px rgba(255, 143, 208, 0.08);
+}
+.flow-step span {
+  display: block;
+  color: #f1deb9;
+  font-size: 0.68rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+.flow-step p { margin: 0; color: #efe4d1; }
+
+.assessment-next-step {
+  margin-top: 1.7rem;
+  padding: 1.3rem;
+  border: 1px solid rgba(214, 178, 94, 0.24);
+  background: linear-gradient(160deg, rgba(14, 9, 13, 0.9), rgba(26, 14, 21, 0.66));
+  box-shadow: 0 12px 26px rgba(8, 4, 8, 0.45), inset 0 0 32px rgba(255, 143, 208, 0.06);
+}
+.assessment-next-step h3 { margin-bottom: 0.6rem; }
+.assessment-next-step .cta { margin-top: 0.35rem; }
+.trust-note { margin: 0.75rem 0 0; color: #d8ccb8; font-size: 0.84rem; }
+
 .assessment-intro {
   max-width: 72ch;
   color: #d7cfc3;
@@ -545,7 +588,7 @@ blockquote {
 .results-links a:hover { border-color: rgba(255,143,208,0.6); box-shadow:0 0 16px rgba(255,143,208,0.2); }
 
 @media (max-width: 960px) {
-  .scale-wrap, .results-grid { grid-template-columns: 1fr; }
+  .scale-wrap, .results-grid, .assessment-flow { grid-template-columns: 1fr; }
 }
 
 .assessment-nav-link {
