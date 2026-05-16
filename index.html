@@ -146,7 +146,9 @@
 
         <p class="assessment-intro">This is a restorative self-reflection experience designed to help you notice where support, structure, and healing are most needed right now. Move gently, answer honestly, and trust what rises.</p>
 
-        <div class="assessment-shell" data-step="welcome">
+        <div id="assessment-container" class="assessment-shell" data-step="welcome"></div>
+
+        <div class="assessment-shell" data-step="welcome" style="display:none;">
           <div class="assessment-progress" aria-live="polite">
             <span class="progress-copy">Welcome</span>
             <div class="progress-track"><div class="progress-fill"></div></div>
@@ -456,6 +458,7 @@
       await showResults();
     });
   </script>
+  <script src="assets/js/assessment.js"></script>
 </body>
 </html>
 
