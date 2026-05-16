@@ -555,7 +555,12 @@ blockquote {
   background: rgba(255, 77, 184, 0.08);
   box-shadow: 0 0 14px rgba(255, 77, 184, 0.25);
 }
-.hero-cta-group { display:flex; gap:0.8rem; flex-wrap: wrap; }
+.hero-cta-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.35rem;
+}
 .cta-assessment { box-shadow: 0 0 30px rgba(255, 77, 184, 0.4), 0 10px 20px rgba(9, 4, 9, 0.45); }
 
 .lead-form {
