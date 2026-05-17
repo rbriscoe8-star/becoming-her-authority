@@ -562,7 +562,7 @@ blockquote {
 .ellie-seal {
   margin: 0.9rem auto 1.1rem;
   width: 54px;
-  opacity: 0.86;
+  opacity: 0.9;
 }
 .ellie-seal img {
   display: block;
@@ -837,26 +837,26 @@ blockquote {
 }
 .assessment-meta span { margin-right: 0.45rem; }
 
-#trust,
-#stories {
+#method-page,
+#trust {
   position: relative;
   isolation: isolate;
 }
-#trust::before,
-#stories::before {
+#method-page::after,
+#trust::after {
   content: "";
   position: absolute;
-  inset: 50% auto auto 50%;
-  width: min(280px, 38vw);
+  right: clamp(0.9rem, 2vw, 1.5rem);
+  bottom: clamp(0.9rem, 2vw, 1.5rem);
+  width: clamp(48px, 7vw, 72px);
   aspect-ratio: 1;
-  transform: translate(-50%, -50%);
   background: url("Becoming Her Authority Offical Logo.png") center/contain no-repeat;
-  opacity: 0.07;
+  opacity: 0.04;
   z-index: 0;
   pointer-events: none;
 }
-#trust > *,
-#stories > * {
+#method-page > *,
+#trust > * {
   position: relative;
   z-index: 1;
 }
