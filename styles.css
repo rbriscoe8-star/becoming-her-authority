@@ -707,6 +707,12 @@ blockquote {
   margin-top: 0.35rem;
 }
 .cta-assessment { box-shadow: 0 0 30px rgba(255, 77, 184, 0.4), 0 10px 20px rgba(9, 4, 9, 0.45); }
+.cta-assessment,
+.cta-strong {
+  border-color: rgba(242, 222, 170, 0.95);
+  background: linear-gradient(140deg, rgba(214, 178, 94, 0.42), rgba(255, 77, 184, 0.2));
+  box-shadow: 0 0 34px rgba(255, 77, 184, 0.35), 0 14px 24px rgba(9, 4, 9, 0.52);
+}
 .hero-cta-microcopy {
   margin: 0.35rem 0 0;
   color: #e8d9bf;
@@ -752,6 +758,12 @@ blockquote {
   box-shadow: 0 12px 24px rgba(10,5,10,0.42), 0 0 20px rgba(255,143,208,0.08);
   border-radius: 8px;
   backdrop-filter: blur(4px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(242, 222, 170, 0.5);
+  box-shadow: 0 16px 28px rgba(10,5,10,0.5), 0 0 24px rgba(255,143,208,0.16);
 }
 .testimonial-card p { margin: 0; color: var(--muted); }
 .testimonial-card p + p { margin-top: 0.8rem; }
@@ -783,6 +795,70 @@ blockquote {
 .card-link:hover {
   border-color: rgba(255,143,208,0.6);
   box-shadow: 0 0 16px rgba(255,143,208,0.2);
+}
+.program-item,
+.ecosystem-card,
+.method-card,
+.pillar-card,
+.featured-offer-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.program-item:hover,
+.ecosystem-card:hover,
+.method-card:hover,
+.pillar-card:hover,
+.featured-offer-card:hover {
+  transform: translateY(-3px);
+}
+
+.experience-list,
+.offer-list {
+  list-style: none;
+  padding-left: 0;
+}
+.experience-list li,
+.offer-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.7rem;
+}
+.experience-list li::before,
+.offer-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--gold-soft);
+}
+
+.assessment-meta {
+  margin: 0.2rem 0;
+  color: #eadab9;
+  letter-spacing: 0.03em;
+}
+.assessment-meta span { margin-right: 0.45rem; }
+
+#trust,
+#stories {
+  position: relative;
+  isolation: isolate;
+}
+#trust::before,
+#stories::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: min(280px, 38vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: url("Becoming Her Authority Offical Logo.png") center/contain no-repeat;
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+}
+#trust > *,
+#stories > * {
+  position: relative;
+  z-index: 1;
 }
 .card-action-row {
   display: flex;
