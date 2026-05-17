@@ -105,7 +105,7 @@
         </p>
       </section>
 
-      <section class="section method" id="method">
+      <section class="section method texture-broken" id="method">
         <p class="section-label">The H.E.R. Method™</p>
         <h2>Heal · Empower · Rise</h2>
         <div class="method-grid">
@@ -173,21 +173,24 @@
         </blockquote>
       </section>
 
-      <section class="section trust-layer" id="trust">
+      <section class="section trust-layer texture-broken" id="trust">
         <p class="section-label">Trust & Credibility</p>
         <h2>Women Deserve More Than Advice. They Deserve Support.</h2>
         <div class="testimonials-grid">
           <article class="testimonial-card">
-            <p class="mini-label">Community Reflection</p>
-            <p>"I felt seen, not judged. I finally had language for what I had been carrying."</p>
+            <p class="mini-label">★★★★★</p>
+            <p>“I felt seen before I felt fixed. This helped me slow down and hear myself again.”</p>
+            <p class="mini-label">— Beta Community Member</p>
           </article>
           <article class="testimonial-card">
-            <p class="mini-label">Community Reflection</p>
-            <p>"This gave me permission to stop performing strength and start rebuilding with intention."</p>
+            <p class="mini-label">★★★★★</p>
+            <p>“I realized I wasn’t lazy or failing. I was emotionally exhausted.”</p>
+            <p class="mini-label">— Early Reader</p>
           </article>
           <article class="testimonial-card">
-            <p class="mini-label">Community Reflection</p>
-            <p>"I realized I wasn't broken. I was exhausted and needed support."</p>
+            <p class="mini-label">★★★★★</p>
+            <p>“The reflection process felt like someone finally gave me permission to breathe.”</p>
+            <p class="mini-label">— Becoming Her Community</p>
           </article>
         </div>
         <div class="trust-row" aria-label="Trust pillars">
@@ -201,7 +204,7 @@
 
       
 
-      <section class="section trust-layer" id="stories">
+      <section class="section trust-layer crown-divider" id="stories">
         <p class="section-label">Real Women. Real Restoration.</p>
         <h2>Community Reflections from Women Rebuilding with Intention</h2>
         <div class="testimonials-grid">
@@ -229,7 +232,7 @@
         </div>
       </section>
 
-      <section class="section ecosystem" id="featured-workbook">
+      <section class="section ecosystem texture-broken" id="featured-workbook">
         <p class="section-label">Featured Workbook</p>
         <h2>Aligning With HER™</h2>
         <p class="mini-label">Heal • Empower • Rise</p>
@@ -348,7 +351,7 @@
           <a href="#assessment" class="cta">Begin Your Assessment</a>
         </div>
       </section>
-      <section class="section ecosystem method-editorial" id="method-page">
+      <section class="section ecosystem method-editorial crown-divider" id="method-page">
         <p class="section-label">The H.E.R. Method™</p>
         <h2>Heal • Empower • Rise</h2>
         <p class="editorial-lead">A luxury, faith-rooted pathway for women ready to heal emotionally, rebuild identity with intention, protect peace without apology, and grow into the next season with clarity.</p>
@@ -419,7 +422,7 @@
         </div>
       </section>
 
-      <section class="section ecosystem" id="assessment-page">
+      <section class="section ecosystem crown-divider" id="assessment-page">
         <p class="section-label">Assessment</p><h2>Begin Your Assessment</h2>
         <p class="editorial-lead">Enter a soft, emotionally intelligent reflection space designed to reveal where your healing, boundaries, and identity support are most needed in this season.</p>
         <div class="ecosystem-card assessment-embed"><h3>Ready for your check-in?</h3><p>Your full guided assessment is live below and takes just a few intentional minutes to complete.</p><a href="#assessment" class="cta">Begin Full Assessment</a></div>
@@ -455,6 +458,19 @@
   </div>
 
   <script>
+    document.querySelectorAll('main .section, .final-cta, .footer').forEach((section) => {
+      section.classList.add('reveal-on-scroll');
+    });
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll('.reveal-on-scroll').forEach((section) => sectionObserver.observe(section));
+
     const assessmentQuestions = [
       { pillar: "Mental", text: "I feel mentally overloaded and struggle to quiet my thoughts." },
       { pillar: "Mental", text: "I find it difficult to focus on what matters most." },
