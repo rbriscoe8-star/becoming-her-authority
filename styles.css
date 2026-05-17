@@ -65,7 +65,7 @@ body {
 .nav-brand,
 .nav-links a { color: var(--white); text-decoration: none; }
 .nav-brand { color: var(--gold-soft); letter-spacing: 0.08em; font-size: 0.78rem; text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.55rem; }
-.nav-ellie { width: clamp(42px, 4vw, 54px); height: auto; display: block; flex-shrink: 0; }
+.nav-ellie { width: clamp(45px, 3.6vw, 60px); height: auto; display: block; flex-shrink: 0; filter: drop-shadow(0 0 10px rgba(214, 178, 94, 0.34)) drop-shadow(0 0 20px rgba(255, 143, 208, 0.14)); opacity: 0.96; }
 .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
 .nav-links a {
   font-size: 0.88rem;
@@ -86,7 +86,7 @@ body {
   box-shadow: 0 8px 16px -12px rgba(255, 77, 184, 0.8);
 }
 
-.hero { min-height: 100vh; position: relative; border-bottom: 1px solid rgba(214, 178, 94, 0.25); }
+.hero { min-height: 86vh; position: relative; border-bottom: 1px solid rgba(214, 178, 94, 0.25); }
 .hero-glow {
   position: absolute; inset: 0;
   background:
@@ -99,31 +99,44 @@ body {
 .hero-inner {
   position: relative; z-index: 1;
   max-width: 1240px; margin: 0 auto;
-  padding: 7.1rem 6vw 7.4rem;
+  padding: 5.3rem 6vw 5.2rem;
   display: grid; gap: 3rem;
   grid-template-columns: 1.15fr 0.85fr; align-items: center;
+  grid-template-areas:
+    "copy image"
+    "cta cta";
+}
+
+.hero::after,
+.section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(55vw, 620px);
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  background: url("Becoming Her Authority Offical Logo.png") center / contain no-repeat;
+  opacity: 0.045;
+  filter: blur(3.5px) saturate(0.9);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section::before {
+  top: 45%;
+  opacity: 0.035;
+  filter: blur(5px) saturate(0.85);
 }
 
 .hero-copy {
+  grid-area: copy;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.logo-panel {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2.1rem;
-  padding: 22px 27px;
-  border-radius: 18px;
-  background:
-    radial-gradient(circle at 70% 16%, rgba(255, 143, 208, 0.11), transparent 54%),
-    rgba(12, 8, 10, 0.72);
-  border: 1px solid rgba(226, 190, 85, 0.35);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 0 20px rgba(255, 77, 184, 0.2), 0 0 31px rgba(226, 190, 85, 0.17);
-}
+.logo-panel { display: none; }
 
 .brand-logo {
   width: min(346px, 72vw);
@@ -190,6 +203,7 @@ h1 {
 .secondary { margin-top: 1rem; }
 
 .hero-image-wrap {
+  grid-area: image;
   margin: 0;
   background:
     linear-gradient(155deg, rgba(255, 143, 208, 0.06), rgba(255, 255, 255, 0.01) 35%),
@@ -197,6 +211,18 @@ h1 {
   border: 1px solid rgba(214, 178, 94, 0.25);
   padding: 1rem;
   box-shadow: 0 0 25px rgba(255, 77, 184, 0.18), inset 0 0 36px rgba(255, 143, 208, 0.09);
+}
+
+.hero-cta-group {
+  grid-area: cta;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.hero-cta-group .secondary {
+  margin-top: 0;
 }
 
 .hero-image { display: block; width: 100%; height: auto; object-fit: cover; border: 1px solid rgba(255, 255, 255, 0.12); }
