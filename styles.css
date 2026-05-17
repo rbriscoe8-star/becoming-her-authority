@@ -736,3 +736,41 @@ blockquote {
 .btn--ghost { background: transparent; color: var(--color-text-muted, var(--muted)); border-color: rgba(255,255,255,0.1); }
 .btn--ghost:hover { color: var(--color-ivory, var(--white)); border-color: rgba(255,255,255,0.2); }
 .btn--full { width: 100%; }
+
+.hero-preview-card {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px dashed rgba(214, 178, 94, 0.35);
+  background: linear-gradient(160deg, rgba(214, 178, 94, 0.08), rgba(255, 77, 184, 0.04));
+  opacity: 0.72;
+  max-width: 30rem;
+  pointer-events: none;
+}
+.hero-preview-card p { margin: 0; color: #e7dcc8; }
+.hero-preview-card .mini-label { margin-bottom: 0.5rem; }
+
+.story-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+.story-card p { margin-bottom: 0.55rem; }
+
+.featured-offer-card {
+  max-width: 760px;
+  padding: 1.6rem;
+  border: 1px solid rgba(214, 178, 94, 0.3);
+  background: linear-gradient(160deg, rgba(214,178,94,0.1), rgba(255,77,184,0.06));
+  box-shadow: 0 14px 30px rgba(10, 5, 10, 0.45), 0 0 24px rgba(255, 143, 208, 0.1);
+}
+.offer-price {
+  color: var(--gold-soft);
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.8rem;
+}
+.offer-list {
+  margin: 1rem 0 1.4rem;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+.offer-list li { margin-bottom: 0.4rem; }
