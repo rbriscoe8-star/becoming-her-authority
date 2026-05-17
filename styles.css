@@ -64,7 +64,8 @@ body {
 
 .nav-brand,
 .nav-links a { color: var(--white); text-decoration: none; }
-.nav-brand { color: var(--gold-soft); letter-spacing: 0.08em; font-size: 0.78rem; text-transform: uppercase; }
+.nav-brand { color: var(--gold-soft); letter-spacing: 0.08em; font-size: 0.78rem; text-transform: uppercase; display: inline-flex; align-items: center; gap: 0.55rem; }
+.nav-ellie { width: clamp(42px, 4vw, 54px); height: auto; display: block; flex-shrink: 0; }
 .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
 .nav-links a {
   font-size: 0.88rem;
@@ -262,9 +263,9 @@ main .section:nth-of-type(4n+4) {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("Untitled design-4.png") center/cover no-repeat;
-  opacity: 0.065;
-  filter: blur(3px) saturate(0.82);
+  background: none;
+  opacity: 0;
+  filter: none;
   pointer-events: none;
 }
 
@@ -559,17 +560,6 @@ blockquote {
   box-shadow: 0 0 0 1px rgba(255, 143, 208, 0.2), 0 0 16px rgba(255, 143, 208, 0.26);
 }
 .footer-copyright { color: #c6bdaF; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; }
-.ellie-seal {
-  margin: 0.9rem auto 1.1rem;
-  width: 54px;
-  opacity: 0.9;
-}
-.ellie-seal img {
-  display: block;
-  width: 100%;
-  height: auto;
-  filter: grayscale(100%) sepia(22%) saturate(75%) brightness(0.92);
-}
 
 .reveal {
   opacity: 0;
@@ -844,16 +834,7 @@ blockquote {
 }
 #method-page::after,
 #trust::after {
-  content: "";
-  position: absolute;
-  right: clamp(0.9rem, 2vw, 1.5rem);
-  bottom: clamp(0.9rem, 2vw, 1.5rem);
-  width: clamp(48px, 7vw, 72px);
-  aspect-ratio: 1;
-  background: url("Becoming Her Authority Offical Logo.png") center/contain no-repeat;
-  opacity: 0.04;
-  z-index: 0;
-  pointer-events: none;
+  content: none;
 }
 #method-page > *,
 #trust > * {
@@ -899,6 +880,7 @@ blockquote {
 }
 @media (max-width: 760px) {
   .top-nav { align-items: flex-start; }
+  .nav-ellie { width: clamp(36px, 8vw, 42px); }
   .about-founder, .ecosystem-grid.three, .resources-grid, .testimonials-grid { grid-template-columns: 1fr; }
 }
 
