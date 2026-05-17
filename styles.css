@@ -972,3 +972,36 @@ blockquote {
   color: var(--muted);
 }
 .offer-list li { margin-bottom: 0.4rem; }
+
+
+.glow-zone {
+  position: relative;
+  isolation: isolate;
+}
+
+.section-watermark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-watermark-seal {
+  width: min(48vw, 460px);
+  height: auto;
+  max-height: 72%;
+  object-fit: contain;
+  opacity: 0.04;
+  filter: blur(1.8px) saturate(0.9);
+}
+
+.glow-zone > * {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-zone > .section-watermark {
+  z-index: 0;
+}
