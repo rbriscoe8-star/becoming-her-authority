@@ -233,6 +233,46 @@ figcaption span {
   border-image: linear-gradient(90deg, transparent, rgba(255, 143, 208, 0.33), rgba(214, 178, 94, 0.2), transparent) 1;
 }
 .positioning p, .faith p, .podcast p { max-width: 76ch; color: var(--muted); }
+.differentiator p {
+  max-width: 76ch;
+  color: var(--muted);
+}
+.differentiator-emphasis {
+  font-size: 1.2rem;
+  color: #f1e0bf;
+  letter-spacing: 0.03em;
+}
+.differentiator-list {
+  margin: 1.35rem 0 0;
+  padding-left: 1.2rem;
+  max-width: 78ch;
+  color: #ddd4c8;
+}
+.differentiator-list li {
+  margin-bottom: 0.65rem;
+  padding-left: 0.25rem;
+}
+.differentiator-list li::marker {
+  color: var(--gold-soft);
+}
+.differentiator-quote {
+  margin-top: 2.8rem;
+  padding: 2.3rem 1.6rem;
+  border: 1px solid rgba(214, 178, 94, 0.28);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 77, 184, 0.14), transparent 64%),
+    linear-gradient(165deg, rgba(214, 178, 94, 0.08), rgba(255, 77, 184, 0.08));
+  box-shadow: inset 0 0 22px rgba(255, 143, 208, 0.09), 0 12px 26px rgba(9, 4, 8, 0.42);
+}
+.differentiator-quote blockquote {
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+}
+.differentiator-closing {
+  margin-top: 2.1rem;
+  font-size: 0.98rem;
+  color: #efe5d4;
+  letter-spacing: 0.02em;
+}
 
 .method-grid, .program-grid, .pillar-grid { display: grid; gap: 1.25rem; }
 .method-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
